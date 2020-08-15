@@ -1,5 +1,6 @@
-<a href="/users/logout">Log Out</a>
-<% if(locals.user){ %>
+<p><a href="/users/logout">Log Out</a></p>
+
 <h2><%= user.name %></h2>
 <h3><%= user.email %></h3>
-<% } %>
+
+<p><a href="/users/update/<%= user.id %>">Reset Password</a></p>

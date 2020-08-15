@@ -13,12 +13,12 @@ passport.use(
     },
     (req, email, password, done) => {
       // find a user and establish the identity
-      User.findOne({ email: email }, (err, user) => {
+      User.findOne({ email: email }, async (err, user) => {
         if (err) {
           return done(err);
         }
 
-        if (!user || !bcrypt.compare(password, user.password)) {
+        if (!user || !(await bcrypt.compare(password, user.password))) {
           return done(null, false);
         }
 

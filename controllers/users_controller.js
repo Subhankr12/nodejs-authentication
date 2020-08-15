@@ -58,6 +58,37 @@ module.exports.create = async (req, res) => {
   });
 };
 
+module.exports.update = (req, res) => {
+  if (req.params.id != req.user.id) {
+    return res.status(401).send("Unauthorized");
+  }
+
+  return res.render("reset_password", {
+    title: "Reset Password",
+  });
+};
+
+module.exports.reset = async (req, res) => {
+  if (req.body.password != req.body.confirm_password) {
+    return res.redirect("back");
+  }
+
+  await User.findById(req.user.id, (err, user) => {
+    if (err) {
+      console.log("Error in finding user while updating");
+      return;
+    }
+
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(req.body.password, salt, (err, hash) => {
+        user.password = hash;
+        user.save();
+        return res.redirect("/");
+      });
+    });
+  });
+};
+
 module.exports.createSession = (req, res) => {
   return res.redirect("/");
 };

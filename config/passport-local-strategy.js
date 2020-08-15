@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
 
@@ -17,7 +18,7 @@ passport.use(
           return done(err);
         }
 
-        if (!user || user.password != password) {
+        if (!user || !bcrypt.compare(password, user.password)) {
           return done(null, false);
         }
 

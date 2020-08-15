@@ -7,6 +7,7 @@ const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const passportGoogle = require("./config/passport-google-strategy");
 const MongoStore = require("connect-mongo")(session);
 
 require("dotenv").config();

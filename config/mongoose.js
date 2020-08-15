@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost/authentication_development");
+mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`);
 
 const db = mongoose.connection;
 

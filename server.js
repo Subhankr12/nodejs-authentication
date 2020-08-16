@@ -10,13 +10,19 @@ const passportLocal = require("./config/passport-local-strategy");
 const passportGoogle = require("./config/passport-google-strategy");
 const MongoStore = require("connect-mongo")(session);
 
+//flash notifications
+const flash = require("connect-flash");
+const customMWare = require("./config/middleware");
+
 require("dotenv").config();
 const port = process.env.PORT;
 
 // middleware
 app.use(express.urlencoded());
-app.use(expressLayouts);
 
+app.use(express.static("./assets"));
+
+app.use(expressLayouts);
 //extract styles and scripts from sub pages into layout
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
@@ -52,6 +58,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+// for flash middleware
+app.use(flash());
+app.use(customMWare.setFlash);
 
 // use express router
 app.use("/", require("./routes"));

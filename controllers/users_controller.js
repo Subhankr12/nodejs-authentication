@@ -90,11 +90,12 @@ module.exports.reset = async (req, res) => {
 };
 
 module.exports.createSession = (req, res) => {
+  req.flash("success", "Logged In Successfully");
   return res.redirect("/");
 };
 
 module.exports.destroySession = (req, res) => {
   req.logout();
-
+  req.flash("error", "You have logged out");
   return res.redirect("/users/login");
 };

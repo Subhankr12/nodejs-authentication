@@ -1,0 +1,33 @@
+body {
+  background: #7ba9e646;
+}
+
+:focus::placeholder {
+  color: #80808077;
+}
+
+input {
+  background: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  border: 1px grey solid;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  width: 92%;
+  background: white;
+  font-size: 1.2rem;
+}
+
+input:focus {
+  /* border: dodgerblue solid 4px */
+  box-shadow: 0 0 3px 5px #80808079;
+}
+
+.outer-layer {
+  background: #1e8fff77;
+  width: 30%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}

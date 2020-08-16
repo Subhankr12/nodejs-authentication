@@ -21,7 +21,7 @@ passport.use(
           return;
         }
 
-        console.log(profile);
+        // console.log(profile);
 
         if (user) {
           //if found, set this as req.user

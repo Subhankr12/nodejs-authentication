@@ -19,6 +19,7 @@ passport.use(
         }
 
         if (!user || !(await bcrypt.compare(password, user.password))) {
+          req.flash("error", "Invalid Email/Password");
           return done(null, false);
         }
 

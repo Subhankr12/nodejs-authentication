@@ -83,6 +83,7 @@ module.exports.reset = async (req, res) => {
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         user.password = hash;
         user.save();
+        req.flash("success", "Password Successfully Changed");
         return res.redirect("/");
       });
     });

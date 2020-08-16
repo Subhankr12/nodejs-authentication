@@ -1,6 +1,25 @@
-<p><a href="/users/logout">Log Out</a></p>
+<div class="text-center">
+  <h1 class="text-info mb-5">Welcome To User Profile Page</h1>
+  <div class="outer-layer mx-auto shadow-lg text-left">
+    <p class="text-secondary h5 text-capitalize">
+      <strong>User Name:</strong> <%= user.name %>
+    </p>
+    <p class="text-secondary h5">
+      <strong>User Email:</strong> <%= user.email %>
+    </p>
 
-<h2><%= user.name %></h2>
-<h3><%= user.email %></h3>
+    <p class="btn btn-secondary mt-5">
+      <a href="/users/update/<%= user.id %>" class="text-white"
+        >Reset Password</a
+      >
+    </p>
+  </div>
+</div>
 
-<p><a href="/users/update/<%= user.id %>">Reset Password</a></p>
+<div class="text-center my-5">
+  <p>
+    <a href="/users/logout" class="text-danger h2"
+      ><i class="fa fa-chevron-left" aria-hidden="true"></i> Log Out</a
+    >
+  </p>
+</div>

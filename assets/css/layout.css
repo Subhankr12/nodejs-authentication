@@ -1,9 +1,12 @@
 body {
-  background: #7ba9e646;
+  /* background: radial-gradient(#729ed8d3, #729ed846); */
 }
 
 :focus::placeholder {
   color: #80808077;
+}
+a {
+  text-decoration: none !important;
 }
 
 input {
@@ -11,7 +14,7 @@ input {
   border: none;
   outline: none;
   display: block;
-  border: 1px grey solid;
+  border: 1.5px #8080808a solid;
   border-radius: 0.5rem;
   margin: 1rem;
   padding: 0.5rem 1rem;
@@ -21,12 +24,10 @@ input {
 }
 
 input:focus {
-  /* border: dodgerblue solid 4px */
-  box-shadow: 0 0 3px 5px #80808079;
+  box-shadow: 0 0 4px 3px #8080808a;
 }
 
 .outer-layer {
-  background: #1e8fff77;
   width: 30%;
   padding: 2rem;
   border-radius: 0.5rem;

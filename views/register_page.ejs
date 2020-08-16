@@ -15,8 +15,18 @@
       placeholder="Enter your name"
       required
     />
-    <input type="submit" value="Sign Up" class="btn btn-primary" />
+    <input type="submit" value="Sign Up" class="btn btn-info" />
   </form>
+  <div class="d-flex justify-content-between mx-3 flex-wrap">
+    <p class="btn btn-danger">
+      <a href="/users/auth/google" class="text-white"
+        >Login Using <i class="fa fa-google-plus" aria-hidden="true"></i
+      ></a>
+    </p>
 
-  <p>Already Registered? <a href="/users/login">Log In</a></p>
+    <p class="">
+      Have an Account ?
+      <a href="/users/login" class="text-white btn btn-success"> Login</a>
+    </p>
+  </div>
 </div>

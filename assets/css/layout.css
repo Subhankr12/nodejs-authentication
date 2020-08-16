@@ -32,3 +32,10 @@ input:focus {
   padding: 2rem;
   border-radius: 0.5rem;
 }
+
+/* media queries */
+@media screen and (max-width: 768px) {
+  .outer-layer {
+    width: 60%;
+  }
+}

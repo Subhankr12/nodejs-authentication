@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
+//render register page if not authenticated otherwise homepage
 module.exports.register = (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect("/");
@@ -11,6 +12,7 @@ module.exports.register = (req, res) => {
   });
 };
 
+//render login page if not authenticated otherwise homepage
 module.exports.login = (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect("/");
@@ -21,6 +23,7 @@ module.exports.login = (req, res) => {
   });
 };
 
+//create user when signing up
 module.exports.create = async (req, res) => {
   if (req.body.password != req.body.confirm_password) {
     return res.redirect("back");
@@ -33,6 +36,7 @@ module.exports.create = async (req, res) => {
     }
 
     if (!user) {
+      //user bcrypt to save hashed password in the db
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(req.body.password, salt, (err, hash) => {
           User.create(
@@ -58,6 +62,7 @@ module.exports.create = async (req, res) => {
   });
 };
 
+//reset password page is visible to authenticated user only
 module.exports.update = (req, res) => {
   if (req.params.id != req.user.id) {
     return res.status(401).send("Unauthorized");
@@ -68,6 +73,7 @@ module.exports.update = (req, res) => {
   });
 };
 
+//reset password and save in db
 module.exports.reset = async (req, res) => {
   if (req.body.password != req.body.confirm_password) {
     return res.redirect("back");
@@ -79,6 +85,7 @@ module.exports.reset = async (req, res) => {
       return;
     }
 
+    //set the new password using bcrypt as well
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         user.password = hash;
@@ -90,11 +97,13 @@ module.exports.reset = async (req, res) => {
   });
 };
 
+//create session when user is authenticated
 module.exports.createSession = (req, res) => {
   req.flash("success", "Logged In Successfully");
   return res.redirect("/");
 };
 
+//destroy session and logout the user
 module.exports.destroySession = (req, res) => {
   req.logout();
   req.flash("error", "You have logged out");

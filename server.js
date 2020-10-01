@@ -66,6 +66,23 @@ app.use(customMWare.setFlash);
 // use express router
 app.use("/", require("./routes"));
 
+//encrypt
+app.use('/encrypt',(req,res)=>{
+  let username = req.username
+  let msg = req.message
+
+  user && msg && (message = encrypt(message))
+  !user && res.send({message: 'Invalid User'})
+  !msg && res.send({message: 'Invalid message'})
+  res.send({result: 'success', data: {message}})
+})
+
+const encrypt = (text = "")=>{
+  console.log(text)
+  return text.split("").reverse().join("");
+}
+
+
 app.listen(port, (err) => {
   if (err) console.log(`Error running the server: ${err}`);
 
